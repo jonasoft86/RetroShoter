@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64dcf26a1cba04e449ce83f584248909, type: 3}
+  m_Name: Level01_DeepSpace
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelName: 'Level 1: Deep Space'
+  background: {fileID: 21300000, guid: 423b89807da4bfc4f9fde1fd7a78c5ba, type: 3}
+  waves:
+  - {fileID: 11400000, guid: 0b82867f8f4d9bb489e4ad999101e15d, type: 2}
+  - {fileID: 11400000, guid: b12b21a1310bb6741ad6419d6e114af0, type: 2}
+  - {fileID: 11400000, guid: 1728340120953e64e8ca76f3a364d8c1, type: 2}
+  bossPrefab: {fileID: 7642507656258257096, guid: b31e6a3967e36f144af1927af2b1e42d, type: 3}
+  music: {fileID: 0}
+  musicTheme: 0
+  nextSceneName: Level02_DesertCanyon

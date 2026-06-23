@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e6d4cc0c31b7848b034324f068ca6e, type: 3}
+  m_Name: EnemyMedium
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Medium Enemy
+  maxHealth: 3
+  speed: 5.5
+  scoreValue: 250
+  contactDamage: 1
+  fireRate: 2.2
+  dropChance: 0.12
+  projectilePrefab: {fileID: 6442867451624707211, guid: 4d016dc7a7e75b64bb351a7f3ec7a270, type: 3}

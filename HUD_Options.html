@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>HUD Options — RetroShooter</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c:#18e0ff;--b:#2d6bce;--m:#ff1ad6;--g:#ffd945;
+  --r:#ff3b4a;--hp:#00cc59;--bg:#040410;--cb:#0b0b1e;
+}
+body{background:var(--bg);color:#b0c4ff;font-family:'Courier New',monospace;padding:24px 20px 40px}
+h1{text-align:center;color:var(--c);font-size:16px;letter-spacing:5px;margin-bottom:4px;
+   text-shadow:0 0 12px rgba(24,224,255,.5)}
+.sub{text-align:center;color:#33405a;font-size:10px;letter-spacing:3px;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;max-width:1000px;margin:0 auto}
+
+.card{background:var(--cb);border:1px solid #141830;border-radius:3px;padding:16px;
+      transition:border-color .2s}
+.card:hover{border-color:rgba(24,224,255,.35)}
+.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.onum{font-size:9px;color:#222c44;letter-spacing:2px}
+.tag{font-size:8px;letter-spacing:1px;padding:2px 7px;border-radius:2px}
+.tf{background:rgba(0,204,89,.12);color:var(--hp);border:1px solid rgba(0,204,89,.3)}
+.tu{background:rgba(255,26,214,.12);color:var(--m);border:1px solid rgba(255,26,214,.3)}
+.oname{font-size:12px;color:var(--c);font-weight:bold;letter-spacing:3px;margin-bottom:5px}
+.odesc{font-size:10px;color:#50607a;line-height:1.6;margin-bottom:13px}
+
+/* ── Game canvas ─────────────────────────────────────────── */
+.cv{
+  width:192px;height:256px;position:relative;margin:0 auto 13px;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 30%,#0c0520 0%,#020208 60%,#05020e 100%);
+  border:1px solid #0e1020;
+}
+/* scanlines */
+.cv::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(180deg,transparent 0px,transparent 2px,rgba(0,0,0,.18) 2px,rgba(0,0,0,.18) 4px);
+  z-index:20}
+.star{position:absolute;border-radius:50%;background:#fff}
+.ship{position:absolute;left:50%;transform:translateX(-50%);
+  width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;
+  border-bottom:18px solid #4aaeff;filter:drop-shadow(0 0 5px #4aaeff);z-index:5}
+.exhaust{position:absolute;left:50%;transform:translateX(-50%);
+  width:0;height:0;border-left:3px solid transparent;border-right:3px solid transparent;
+  border-top:8px solid rgba(255,120,0,.7);filter:blur(.5px);z-index:4}
+.en{position:absolute;width:10px;height:8px;border-radius:2px;z-index:5}
+.blt{position:absolute;width:2px;height:9px;background:#aaeeff;border-radius:1px;
+  box-shadow:0 0 4px #4af;z-index:6}
+.free{position:absolute;border:1px dashed rgba(0,255,80,.22);
+  background:rgba(0,255,80,.04);pointer-events:none;z-index:2}
+.hp{display:inline-block;height:100%;background:var(--hp)}
+.hpbar{display:inline-block;background:#060d1a;border:.5px solid rgba(45,107,206,.5);overflow:hidden}
+
+/* HUD panels */
+.panel{position:absolute;background:rgba(3,6,20,.88);font-family:'Courier New',monospace;z-index:10}
+.ghost{position:absolute;font-family:'Courier New',monospace;z-index:10}
+
+/* ── Stats row ──────────────────────────────────────────── */
+.srow{display:flex;gap:10px;margin-bottom:12px}
+.s{display:flex;flex-direction:column}
+.sv{color:#7090a0;font-size:12px;font-weight:bold}
+.sl{font-size:8px;color:#28304a;letter-spacing:1px}
+
+/* ── Button ─────────────────────────────────────────────── */
+.btn{
+  width:100%;padding:9px 0;background:transparent;border:1px solid #1e2850;
+  color:#506090;font-family:'Courier New',monospace;font-size:10px;
+  letter-spacing:3px;cursor:pointer;border-radius:2px;transition:all .15s
+}
+.btn:hover{background:rgba(24,224,255,.08);border-color:var(--c);color:var(--c);
+  text-shadow:0 0 8px var(--c)}
+.btn.picked{border-color:var(--c);color:var(--c);background:rgba(24,224,255,.06)}
+
+#result{
+  display:none;margin:22px auto 0;max-width:1000px;padding:14px 20px;
+  border:1px solid #1e2850;background:var(--cb);font-size:11px;
+  color:#6080a0;letter-spacing:1px;text-align:center
+}
+</style>
+</head>
+<body>
+
+<h1>◈ HUD OPTIONS</h1>
+<p class="sub">retro shooter — escoge el layout del HUD</p>
+
+<div class="grid">
+
+<!-- ══════════════════════════════════════════════
+     OPCIÓN A — THIN TOP STRIP
+══════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="ch">
+    <span class="onum">OPCIÓN A</span>
+    <span class="tag tf">96.6% libre</span>
+  </div>
+  <div class="oname">THIN TOP STRIP</div>
+  <div class="odesc">Una sola barra de 22 px en la parte superior. Todo en una línea. El resto de la pantalla queda completamente libre.</div>
+
+  <div class="cv">
+    <div class="star" style="width:1px;height:1px;left:22px;top:45px;opacity:.5"></div>
+    <div class="star" style="width:2px;height:2px;left:88px;top:72px;opacity:.7"></div>
+    <div class="star" style="width:1px;height:1px;left:145px;top:35px;opacity:.5"></div>
+    <div class="star" style="width:1px;height:1px;left:55px;top:130px;opacity:.6"></div>
+    <div class="star" style="width:2px;height:2px;left:170px;top:100px;opacity:.4"></div>
+    <div class="star" style="width:1px;height:1px;left:110px;top:195px;opacity:.6"></div>
+    <div class="star" style="width:1px;height:1px;left:32px;top:210px;opacity:.5"></div>
+
+    <!-- TOP STRIP -->
+    <div class="panel" style="left:0;top:0;right:0;height:9px;
+         border-bottom:1px solid rgba(24,200,255,.28);
+         display:flex;align-items:center;padding:0 5px;justify-content:space-between;">
+      <span style="font-size:5.5px;color:var(--c);font-weight:bold;letter-spacing:.5px">000000</span>
+      <span style="display:flex;align-items:center;gap:2px">
+        <span style="font-size:4px;color:var(--b)">HP</span>
+        <span class="hpbar" style="width:32px;height:3.5px">
+          <span class="hp" style="width:70%"></span>
+        </span>
+      </span>
+      <span style="font-size:6px;color:var(--r)">♥♥♥</span>
+      <span style="font-size:5.5px;color:var(--m);font-weight:bold">x1</span>
+    </div>
+
+    <div class="free" style="left:2px;top:11px;right:2px;bottom:2px"></div>
+
+    <div class="en" style="left:28px;top:50px;background:#f43;box-shadow:0 0 4px #f43"></div>
+    <div class="en" style="left:82px;top:38px;background:#f96;box-shadow:0 0 4px #f96"></div>
+    <div class="en" style="left:145px;top:58px;background:#f43;box-shadow:0 0 4px #f43"></div>
+    <div class="blt" style="left:95px;top:142px"></div>
+    <div class="ship" style="bottom:55px"></div>
+    <div class="exhaust" style="bottom:47px"></div>
+  </div>
+
+  <div class="srow">
+    <div class="s"><span class="sv">22 px</span><span class="sl">altura HUD</span></div>
+    <div class="s"><span class="sv">96.6 %</span><span class="sl">área libre</span></div>
+    <div class="s"><span class="sv">1 barra</span><span class="sl">todo en línea</span></div>
+  </div>
+  <button class="btn" onclick="pick('A',this)">▶ APLICAR OPCIÓN A</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     OPCIÓN B — MICRO CORNERS
+══════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="ch">
+    <span class="onum">OPCIÓN B</span>
+    <span class="tag tf">~95 % libre</span>
+  </div>
+  <div class="oname">MICRO CORNERS</div>
+  <div class="odesc">4 badges pequeños en esquinas, semi-transparentes. Sin labels; solo valores. No bloquean el centro de acción.</div>
+
+  <div class="cv">
+    <div class="star" style="width:1px;height:1px;left:72px;top:45px;opacity:.5"></div>
+    <div class="star" style="width:2px;height:2px;left:125px;top:82px;opacity:.6"></div>
+    <div class="star" style="width:1px;height:1px;left:45px;top:115px;opacity:.5"></div>
+    <div class="star" style="width:1px;height:1px;left:158px;top:65px;opacity:.7"></div>
+    <div class="star" style="width:1px;height:1px;left:95px;top:170px;opacity:.4"></div>
+    <div class="star" style="width:2px;height:2px;left:28px;top:198px;opacity:.5"></div>
+
+    <!-- TL: Score -->
+    <div class="panel" style="left:0;top:0;width:56px;height:20px;
+         border-right:1px solid rgba(24,144,255,.35);border-bottom:1px solid rgba(24,144,255,.35);
+         border-radius:0 0 3px 0;display:flex;flex-direction:column;justify-content:center;padding:2px 4px">
+      <span style="font-size:3.5px;color:#2d5090;letter-spacing:.5px">SCORE</span>
+      <span style="font-size:6.5px;color:var(--c);font-weight:bold;letter-spacing:.5px">000000</span>
+    </div>
+
+    <!-- TR: Lives -->
+    <div class="panel" style="right:0;top:0;width:46px;height:20px;
+         border-left:1px solid rgba(255,59,74,.35);border-bottom:1px solid rgba(255,59,74,.35);
+         border-radius:0 0 0 3px;display:flex;align-items:center;justify-content:flex-end;padding:0 5px">
+      <span style="font-size:7px;color:var(--r)">♥♥♥</span>
+    </div>
+
+    <!-- BL: HP -->
+    <div class="panel" style="left:0;bottom:0;width:60px;height:16px;
+         border-right:1px solid rgba(45,107,206,.35);border-top:1px solid rgba(45,107,206,.35);
+         border-radius:0 3px 0 0;display:flex;align-items:center;padding:0 4px;gap:3px">
+      <span style="font-size:3.5px;color:var(--b)">HP</span>
+      <span class="hpbar" style="width:34px;height:4px">
+        <span class="hp" style="width:70%"></span>
+      </span>
+    </div>
+
+    <!-- BR: Multiplier -->
+    <div class="panel" style="right:0;bottom:0;width:32px;height:16px;
+         border-left:1px solid rgba(255,26,214,.35);border-top:1px solid rgba(255,26,214,.35);
+         border-radius:3px 0 0 0;display:flex;align-items:center;justify-content:center">
+      <span style="font-size:8px;color:var(--m);font-weight:bold">x1</span>
+    </div>
+
+    <div class="free" style="left:58px;top:22px;right:48px;bottom:18px"></div>
+
+    <div class="en" style="left:72px;top:52px;background:#f43;box-shadow:0 0 4px #f43"></div>
+    <div class="en" style="left:115px;top:40px;background:#f96;box-shadow:0 0 4px #f96"></div>
+    <div class="en" style="left:90px;top:72px;background:#f43;box-shadow:0 0 4px #f43"></div>
+    <div class="blt" style="left:95px;top:130px"></div>
+    <div class="ship" style="bottom:55px"></div>
+    <div class="exhaust" style="bottom:47px"></div>
+  </div>
+
+  <div class="srow">
+    <div class="s"><span class="sv">4 badges</span><span class="sl">1 por esquina</span></div>
+    <div class="s"><span class="sv">~95 %</span><span class="sl">área libre</span></div>
+    <div class="s"><span class="sv">semi-transp</span><span class="sl">fondo dark</span></div>
+  </div>
+  <button class="btn" onclick="pick('B',this)">▶ APLICAR OPCIÓN B</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     OPCIÓN C — GHOST TEXT
+══════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="ch">
+    <span class="onum">OPCIÓN C</span>
+    <span class="tag tu">+ minimal</span>
+  </div>
+  <div class="oname">GHOST TEXT</div>
+  <div class="odesc">Sin fondos, sin paneles. Solo texto con glow sutil en las esquinas. Máxima transparencia — el juego se ve completo.</div>
+
+  <div class="cv">
+    <div class="star" style="width:1px;height:1px;left:52px;top:52px;opacity:.5"></div>
+    <div class="star" style="width:2px;height:2px;left:105px;top:35px;opacity:.6"></div>
+    <div class="star" style="width:1px;height:1px;left:162px;top:82px;opacity:.5"></div>
+    <div class="star" style="width:1px;height:1px;left:38px;top:148px;opacity:.7"></div>
+    <div class="star" style="width:2px;height:2px;left:148px;top:128px;opacity:.4"></div>
+    <div class="star" style="width:1px;height:1px;left:78px;top:205px;opacity:.5"></div>
+
+    <!-- Ghost TL: Score -->
+    <div class="ghost" style="left:5px;top:4px;font-size:7px;color:var(--c);font-weight:bold;
+         letter-spacing:.5px;text-shadow:0 0 6px rgba(24,224,255,.7),0 1px 2px #000;opacity:.9">
+      000000
+    </div>
+
+    <!-- Ghost TR: Lives -->
+    <div class="ghost" style="right:5px;top:5px;font-size:7px;color:var(--r);text-align:right;
+         text-shadow:0 0 6px rgba(255,59,74,.7),0 1px 2px #000;opacity:.9">
+      ♥♥♥
+    </div>
+
+    <!-- Ghost BL: HP -->
+    <div style="position:absolute;left:5px;bottom:5px;display:flex;align-items:center;
+         gap:3px;z-index:10;opacity:.85">
+      <span style="font-size:4px;color:var(--b);font-family:monospace;
+            text-shadow:0 0 5px var(--b)">HP</span>
+      <span class="hpbar" style="width:34px;height:3px;border-color:rgba(45,107,206,.4);background:rgba(6,13,26,.6)">
+        <span class="hp" style="width:70%;box-shadow:0 0 4px var(--hp)"></span>
+      </span>
+    </div>
+
+    <!-- Ghost BR: Mult -->
+    <div class="ghost" style="right:5px;bottom:4px;font-size:8px;color:var(--m);font-weight:bold;
+         text-shadow:0 0 7px rgba(255,26,214,.8),0 1px 2px #000;opacity:.9">
+      x1
+    </div>
+
+    <div class="en" style="left:62px;top:55px;background:#f43;box-shadow:0 0 4px #f43"></div>
+    <div class="en" style="left:108px;top:42px;background:#f96;box-shadow:0 0 4px #f96"></div>
+    <div class="en" style="left:84px;top:75px;background:#f43;box-shadow:0 0 4px #f43"></div>
+    <div class="blt" style="left:95px;top:130px"></div>
+    <div class="ship" style="bottom:55px"></div>
+    <div class="exhaust" style="bottom:47px"></div>
+  </div>
+
+  <div class="srow">
+    <div class="s"><span class="sv">0 fondos</span><span class="sl">sin paneles</span></div>
+    <div class="s"><span class="sv">~100 %</span><span class="sl">área libre</span></div>
+    <div class="s"><span class="sv">glow</span><span class="sl">solo texto</span></div>
+  </div>
+  <button class="btn" onclick="pick('C',this)">▶ APLICAR OPCIÓN C</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     OPCIÓN D — SLIM BOTTOM BAR
+══════════════════════════════════════════════════ -->
+<div class="card">
+  <div class="ch">
+    <span class="onum">OPCIÓN D</span>
+    <span class="tag tf">96.6 % libre</span>
+  </div>
+  <div class="oname">SLIM BOTTOM BAR</div>
+  <div class="odesc">Barra fina en la parte inferior. Deja la zona superior 100 % libre — ideal para shooters verticales donde los enemigos vienen de arriba.</div>
+
+  <div class="cv">
+    <div class="star" style="width:1px;height:1px;left:32px;top:32px;opacity:.6"></div>
+    <div class="star" style="width:2px;height:2px;left:92px;top:62px;opacity:.5"></div>
+    <div class="star" style="width:1px;height:1px;left:158px;top:42px;opacity:.6"></div>
+    <div class="star" style="width:1px;height:1px;left:62px;top:108px;opacity:.5"></div>
+    <div class="star" style="width:1px;height:1px;left:132px;top:138px;opacity:.4"></div>
+    <div class="star" style="width:2px;height:2px;left:22px;top:168px;opacity:.5"></div>
+
+    <div class="free" style="left:2px;top:2px;right:2px;bottom:11px"></div>
+
+    <div class="en" style="left:26px;top:38px;background:#f43;box-shadow:0 0 4px #f43"></div>
+    <div class="en" style="left:82px;top:28px;background:#f96;box-shadow:0 0 4px #f96"></div>
+    <div class="en" style="left:148px;top:48px;background:#f43;box-shadow:0 0 4px #f43"></div>
+    <div class="blt" style="left:95px;top:112px"></div>
+    <div class="ship" style="bottom:28px"></div>
+    <div class="exhaust" style="bottom:20px"></div>
+
+    <!-- BOTTOM STRIP -->
+    <div class="panel" style="left:0;bottom:0;right:0;height:9px;
+         border-top:1px solid rgba(24,200,255,.28);
+         display:flex;align-items:center;padding:0 5px;justify-content:space-between;">
+      <span style="display:flex;align-items:center;gap:2px">
+        <span style="font-size:4px;color:var(--b)">HP</span>
+        <span class="hpbar" style="width:28px;height:3.5px">
+          <span class="hp" style="width:70%"></span>
+        </span>
+      </span>
+      <span style="font-size:5.5px;color:var(--c);font-weight:bold;letter-spacing:.5px">000000</span>
+      <span style="font-size:6px;color:var(--r)">♥♥♥</span>
+      <span style="font-size:5.5px;color:var(--m);font-weight:bold">x1</span>
+    </div>
+  </div>
+
+  <div class="srow">
+    <div class="s"><span class="sv">22 px</span><span class="sl">altura HUD</span></div>
+    <div class="s"><span class="sv">96.6 %</span><span class="sl">área libre</span></div>
+    <div class="s"><span class="sv">top libre</span><span class="sl">zona enemigos</span></div>
+  </div>
+  <button class="btn" onclick="pick('D',this)">▶ APLICAR OPCIÓN D</button>
+</div>
+
+</div><!-- /grid -->
+
+<div id="result"></div>
+
+<script>
+function pick(opt,btn){
+  document.querySelectorAll('.btn').forEach(b=>{b.classList.remove('picked')});
+  btn.classList.add('picked');
+  var names={A:'Thin Top Strip',B:'Micro Corners',C:'Ghost Text',D:'Slim Bottom Bar'};
+  var r=document.getElementById('result');
+  r.style.display='block';
+  r.innerHTML='◈ Seleccionaste <strong style="color:#18e0ff">'+names[opt]+' — Opción '+opt+'</strong>'
+    +'<br><span style="font-size:9px;color:#283450;margin-top:4px;display:block">'
+    +'Dile al asistente tu elección y aplicará los cambios en Unity.</span>';
+}
+</script>
+</body>
+</html>
