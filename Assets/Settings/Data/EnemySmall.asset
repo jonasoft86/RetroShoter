@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Small Enemy
   maxHealth: 1
-  speed: 6
+  speed: 2.6
   scoreValue: 100
   contactDamage: 1
   fireRate: 0
-  dropChance: 0.05
+  dropChance: 0.032
   projectilePrefab: {fileID: 0}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: M3_Wave03_Mechs
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemyPrefab: {fileID: 4334040710697964844, guid: c6e7ca7d38dfb4943a2402e4dba9c502, type: 3}
-  enemyCount: 8
-  spawnInterval: 1.0
+  enemyCount: 5
+  spawnInterval: 1.35
   delayBeforeNextWave: 1.5
   horizontalPattern:
     serializedVersion: 2
@@ -40,3 +40,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  zigzagChance: 0.6
+  zigzagAmplitudeMin: 1
+  zigzagAmplitudeMax: 1.5
+  zigzagFrequency: 2
+  stopShootChance: 0.25
+  stopThresholdY: 0.5
+  stopDuration: 1.5

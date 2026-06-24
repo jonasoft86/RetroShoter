@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: M3_Wave01_Flyers
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemyPrefab: {fileID: 2144118088145597780, guid: eedef54f9d2013b4b8a758394e2b34a9, type: 3}
-  enemyCount: 18
-  spawnInterval: 0.35
+  enemyCount: 12
+  spawnInterval: 0.5
   delayBeforeNextWave: 1
   horizontalPattern:
     serializedVersion: 2
@@ -40,3 +40,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  sweepChance: 0.5
+  sweepSpeed: 3
+  bounceChance: 0.3
+  bounceSpeed: 3

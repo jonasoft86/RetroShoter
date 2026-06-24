@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &203208878
+--- !u!1 &323018467
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,65 +127,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 203208880}
-  - component: {fileID: 203208879}
-  m_Layer: 0
-  m_Name: Milestone 2 Game
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &203208879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203208878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d2941b25b6f4f259d08a2056e39d05e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Milestone1Game
-  levelData: {fileID: 11400000, guid: 63d2b7ecc150e234798b9425fe2f7906, type: 2}
-  playerPrefab: {fileID: 9075516384238889334, guid: af2a56778c0802f4c874f9b4dad9812e, type: 3}
-  hudPrefab: {fileID: 5279228730615658713, guid: 7ff2ce8bdfa9d7f47850781dcd5ec5af, type: 3}
-  smallExplosionPrefab: {fileID: 6770893400866804552, guid: 4dc5be84db2ee494e83e4ef08f61be71, type: 3}
-  bigExplosionPrefab: {fileID: 985545781780015846, guid: 5770370d09c64fc49835f1f9070bc45f, type: 3}
-  powerUpPrefabs:
-  - {fileID: 6372628719848487536, guid: 3e847772bbb3fef449c42bb54fee5638, type: 3}
-  - {fileID: 2478846206485436744, guid: b3c153ec367b4964795847af19186d76, type: 3}
-  - {fileID: 8105501316298576935, guid: 41f3f0210a0baee498d2d566188117cd, type: 3}
-  - {fileID: 5663346579985048697, guid: ccd0d5ec692c98841bf30789d06d181b, type: 3}
-  playerLives: 3
-  loopWaves: 0
---- !u!4 &203208880
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203208878}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1717732550
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1717732553}
-  - component: {fileID: 1717732552}
-  - component: {fileID: 1717732551}
+  - component: {fileID: 323018470}
+  - component: {fileID: 323018469}
+  - component: {fileID: 323018468}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -193,21 +137,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1717732551
+--- !u!81 &323018468
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717732550}
+  m_GameObject: {fileID: 323018467}
   m_Enabled: 1
---- !u!20 &1717732552
+--- !u!20 &323018469
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717732550}
+  m_GameObject: {fileID: 323018467}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -252,16 +196,72 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &1717732553
+--- !u!4 &323018470
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717732550}
+  m_GameObject: {fileID: 323018467}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1264072049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264072051}
+  - component: {fileID: 1264072050}
+  m_Layer: 0
+  m_Name: Milestone 2 Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1264072050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264072049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2941b25b6f4f259d08a2056e39d05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Milestone1Game
+  levelData: {fileID: 11400000, guid: 63d2b7ecc150e234798b9425fe2f7906, type: 2}
+  playerPrefab: {fileID: 9075516384238889334, guid: af2a56778c0802f4c874f9b4dad9812e, type: 3}
+  hudPrefab: {fileID: 5279228730615658713, guid: 7ff2ce8bdfa9d7f47850781dcd5ec5af, type: 3}
+  smallExplosionPrefab: {fileID: 6770893400866804552, guid: 4dc5be84db2ee494e83e4ef08f61be71, type: 3}
+  bigExplosionPrefab: {fileID: 985545781780015846, guid: 5770370d09c64fc49835f1f9070bc45f, type: 3}
+  powerUpPrefabs:
+  - {fileID: 6372628719848487536, guid: 3e847772bbb3fef449c42bb54fee5638, type: 3}
+  - {fileID: 2478846206485436744, guid: b3c153ec367b4964795847af19186d76, type: 3}
+  - {fileID: 8105501316298576935, guid: 41f3f0210a0baee498d2d566188117cd, type: 3}
+  - {fileID: 5663346579985048697, guid: ccd0d5ec692c98841bf30789d06d181b, type: 3}
+  playerLives: 3
+  loopWaves: 0
+--- !u!4 &1264072051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264072049}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -271,5 +271,5 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1717732553}
-  - {fileID: 203208880}
+  - {fileID: 323018470}
+  - {fileID: 1264072051}

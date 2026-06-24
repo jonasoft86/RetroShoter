@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   data: {fileID: 11400000, guid: 56c944a1a24fc714bb0879923f3446ab, type: 2}
   fallbackHealth: 1
-  fallbackSpeed: 7
+  fallbackSpeed: 5.2
   fallbackScore: 100
   fallbackContactDamage: 1
 --- !u!114 &8810107052002772347

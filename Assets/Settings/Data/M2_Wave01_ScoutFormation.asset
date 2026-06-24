@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: M2_Wave01_ScoutFormation
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemyPrefab: {fileID: 2144118088145597780, guid: eedef54f9d2013b4b8a758394e2b34a9, type: 3}
-  enemyCount: 13
-  spawnInterval: 0.7
+  enemyCount: 8
+  spawnInterval: 0.9
   delayBeforeNextWave: 1.5
   horizontalPattern:
     serializedVersion: 2
@@ -40,3 +40,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  homingChance: 0.5
+  homingStrength: 3

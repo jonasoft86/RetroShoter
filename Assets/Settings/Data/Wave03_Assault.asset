@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wave03_Assault
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemyPrefab: {fileID: 2144118088145597780, guid: eedef54f9d2013b4b8a758394e2b34a9, type: 3}
-  enemyCount: 16
-  spawnInterval: 0.5
+  enemyCount: 10
+  spawnInterval: 0.7
   delayBeforeNextWave: 2
   horizontalPattern:
     serializedVersion: 2
@@ -40,3 +40,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  zigzagChance: 0.6
+  zigzagAmplitudeMin: 1
+  zigzagAmplitudeMax: 1.5
+  zigzagFrequency: 1.5
+  diveChance: 0.25
+  diveThresholdY: 1
+  diveSpeed: 8

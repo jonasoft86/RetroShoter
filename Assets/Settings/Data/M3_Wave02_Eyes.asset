@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: M3_Wave02_Eyes
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemyPrefab: {fileID: 1425542250666201532, guid: d24fcdc2b27aaa44e89834064ecd9ffb, type: 3}
-  enemyCount: 14
-  spawnInterval: 0.55
+  enemyCount: 9
+  spawnInterval: 0.75
   delayBeforeNextWave: 1.2
   horizontalPattern:
     serializedVersion: 2
@@ -49,3 +49,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  zigzagChance: 0.5
+  zigzagAmplitudeMin: 1
+  zigzagAmplitudeMax: 1.5
+  zigzagFrequency: 1.5
+  homingChance: 0.3
+  homingStrength: 3

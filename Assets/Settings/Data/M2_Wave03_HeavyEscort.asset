@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: M2_Wave03_HeavyEscort
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemyPrefab: {fileID: 4334040710697964844, guid: c6e7ca7d38dfb4943a2402e4dba9c502, type: 3}
-  enemyCount: 6
-  spawnInterval: 1.5
+  enemyCount: 3
+  spawnInterval: 2
   delayBeforeNextWave: 1.5
   horizontalPattern:
     serializedVersion: 2
@@ -40,3 +40,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  sweepChance: 0.5
+  sweepSpeed: 3
+  stopShootChance: 0.35
+  stopThresholdY: 0
+  stopDuration: 1.5

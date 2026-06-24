@@ -18,6 +18,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b82867f8f4d9bb489e4ad999101e15d, type: 2}
   - {fileID: 11400000, guid: b12b21a1310bb6741ad6419d6e114af0, type: 2}
   - {fileID: 11400000, guid: 1728340120953e64e8ca76f3a364d8c1, type: 2}
+  - {fileID: 11400000, guid: 8f9d564fee8ee5d4f8883084b945ba10, type: 2}
+  - {fileID: 11400000, guid: cbcd976f16d0fb24491059795507bcad, type: 2}
+  - {fileID: 11400000, guid: 072b242a628908e4a9b2c76d1d35200e, type: 2}
+  - {fileID: 11400000, guid: 67d96779ec822424fba699fb71a25d19, type: 2}
+  - {fileID: 11400000, guid: 0279e0d8f6cc38d4fb9769fbf26f1ad5, type: 2}
+  - {fileID: 11400000, guid: b31d672a8ed835549ba46cf4f4f31d1a, type: 2}
   bossPrefab: {fileID: 7642507656258257096, guid: b31e6a3967e36f144af1927af2b1e42d, type: 3}
   music: {fileID: 0}
   musicTheme: 0

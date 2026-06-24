@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Big Enemy
   maxHealth: 8
-  speed: 4
+  speed: 1.1
   scoreValue: 500
   contactDamage: 2
   fireRate: 1.6

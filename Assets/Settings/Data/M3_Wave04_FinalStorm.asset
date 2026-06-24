@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: M3_Wave04_FinalStorm
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemyPrefab: {fileID: 1425542250666201532, guid: d24fcdc2b27aaa44e89834064ecd9ffb, type: 3}
-  enemyCount: 22
-  spawnInterval: 0.3
+  enemyCount: 14
+  spawnInterval: 0.45
   delayBeforeNextWave: 2
   horizontalPattern:
     serializedVersion: 2
@@ -58,3 +58,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  sweepChance: 0.5
+  sweepSpeed: 4
+  diveChance: 0.3
+  diveThresholdY: 1
+  diveSpeed: 9

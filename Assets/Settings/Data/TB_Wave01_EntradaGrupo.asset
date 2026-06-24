@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c12061bc5c665e64fbdf3fd0a5d5cd0b, type: 3}
-  m_Name: M2_Wave05_FinalGuard
+  m_Name: TB_Wave01_EntradaGrupo
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
-  enemyPrefab: {fileID: 1425542250666201532, guid: d24fcdc2b27aaa44e89834064ecd9ffb, type: 3}
-  enemyCount: 8
-  spawnInterval: 0.85
-  delayBeforeNextWave: 2
+  enemyPrefab: {fileID: 2144118088145597780, guid: eedef54f9d2013b4b8a758394e2b34a9, type: 3}
+  enemyCount: 5
+  spawnInterval: 0.9
+  delayBeforeNextWave: 1.5
   horizontalPattern:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.85
+      value: 0.2
       inSlope: 0
-      outSlope: -0.70000005
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.15
-      inSlope: -0.70000005
+      value: 0.8
+      inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
@@ -40,8 +40,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  sweepChance: 0.45
-  sweepSpeed: 3.5
-  stopShootChance: 0.35
-  stopThresholdY: 0
-  stopDuration: 1.5

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: M2_Wave02_Gunships
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemyPrefab: {fileID: 1425542250666201532, guid: d24fcdc2b27aaa44e89834064ecd9ffb, type: 3}
-  enemyCount: 8
-  spawnInterval: 1.0
+  enemyCount: 5
+  spawnInterval: 1.3
   delayBeforeNextWave: 2
   horizontalPattern:
     serializedVersion: 2
@@ -49,3 +49,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  zigzagChance: 0.5
+  zigzagAmplitudeMin: 1
+  zigzagAmplitudeMax: 1.5
+  zigzagFrequency: 1.5
+  bounceChance: 0.3
+  bounceSpeed: 3

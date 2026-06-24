@@ -29,6 +29,7 @@ public class BossController : MonoBehaviour, IDamageable
         GameEvents.RaiseBossVisibilityChanged(true);
         RaiseHealth();
         StartCoroutine(AttackLoop());
+        StartCoroutine(MoveLoop());
     }
 
     private void OnDestroy() => GameEvents.RaiseBossVisibilityChanged(false);
@@ -81,6 +82,41 @@ public class BossController : MonoBehaviour, IDamageable
             animator?.SetTrigger("Attack");
             FirePattern();
             yield return new WaitForSeconds(data != null ? data.attackInterval : 2f);
+        }
+    }
+
+    private IEnumerator MoveLoop()
+    {
+        float speed      = data != null ? data.patrolSpeed    : 1.5f;
+        float marginX    = data != null ? data.patrolMarginX  : 0.12f;
+        float targetEntryY  = data != null ? data.entryY      : 3.0f;
+        float entrySpeed = data != null ? data.entrySpeed     : 2f;
+
+        Camera cam = Camera.main;
+        float leftBound  = cam != null ? cam.ViewportToWorldPoint(new Vector3(marginX,       0f, 0f)).x : -3.5f;
+        float rightBound = cam != null ? cam.ViewportToWorldPoint(new Vector3(1f - marginX, 0f, 0f)).x :  3.5f;
+
+        // Descend to entry row if spawned above it
+        while (IsAlive && transform.position.y > targetEntryY)
+        {
+            Vector3 p = transform.position;
+            p.y = Mathf.MoveTowards(p.y, targetEntryY, entrySpeed * Time.deltaTime);
+            transform.position = p;
+            yield return null;
+        }
+
+        if (!IsAlive || speed <= 0f) yield break;
+
+        // Patrol left <-> right
+        float targetX = rightBound;
+        while (IsAlive)
+        {
+            Vector3 p = transform.position;
+            p.x = Mathf.MoveTowards(p.x, targetX, speed * Time.deltaTime);
+            transform.position = p;
+            if (Mathf.Abs(p.x - targetX) < 0.02f)
+                targetX = (targetX >= rightBound) ? leftBound : rightBound;
+            yield return null;
         }
     }
 
